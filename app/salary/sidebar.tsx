@@ -84,6 +84,7 @@ const Sidebar = () => {
         size="icon"
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
         disabled={currentPage === 1}
+        className='cursor-pointer'
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
