@@ -8,13 +8,13 @@ import React from 'react'
 
 function Calender() {
   return (
-    <div className="space-y-6">
-            <div className="flex items-center justify-between">
+    <div className="space-y-6 ">
+            <div className=" flex items-center justify-between  ">
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="icon" className="rounded-full">
+                <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                   <Shield className="h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
+                <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                   <FileText className="h-4 w-4" />
                 </Button>
                 <div className="relative ">
@@ -22,12 +22,12 @@ function Calender() {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="h-10 w-[300px] rounded-full border border-input bg-background pl-9 pr-4 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="h-10 w-[100px]  md:w-[300px]  rounded-full border border-input bg-background pl-9 pr-4 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="icon" className="rounded-full">
+                <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M4 6H20M4 12H20M4 18H12"
@@ -38,7 +38,7 @@ function Calender() {
                     />
                   </svg>
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
+                <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                   <Plus className="h-5 w-5" />
                 </Button>
               </div>
@@ -65,13 +65,13 @@ function Calender() {
                 </div>
               </div>
 
-              <div className="mb-4 flex items-center justify-between">
-                <Select defaultValue="december">
-                  <SelectTrigger className="w-[180px]">
+              <div className="mb-4 flex items-center  justify-between">
+                <Select defaultValue="december" indicatorClassName="bg-white">
+                  <SelectTrigger className="w-[180px] cursor-pointer">
                     <SelectValue placeholder="December" />
                   </SelectTrigger>
-              <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
                   <SelectContent>
+              <ScrollArea className="max-h-[200px] w-full overflow-y-auto">
                     <SelectItem value="november">November</SelectItem>
                     <SelectItem value="december">December</SelectItem>
                     <SelectItem value="january">January</SelectItem>
@@ -83,9 +83,9 @@ function Calender() {
                     <SelectItem value="july">July</SelectItem>
                     <SelectItem value="august">August</SelectItem>
                     <SelectItem value="september">September</SelectItem>
+                </ScrollArea>
                   </SelectContent>
                 
-                </ScrollArea>
                 </Select>
               </div>
 
