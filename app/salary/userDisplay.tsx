@@ -111,7 +111,7 @@ const UserDisplay = () => {
               </svg>
               <span className="text-sm text-gray-500">Citizenship</span>
             </div>
-            <span className="text-sm">{user.Citizenship}</span>
+            <span className="text-sm">{user.citizenship}</span>
           </div>
 
           <div className="flex items-center justify-between">
