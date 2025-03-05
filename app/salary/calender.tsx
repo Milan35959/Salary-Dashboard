@@ -5,9 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import {  FileText, Plus, Search, Shield } from 'lucide-react'
 import React from 'react'
-interface CustomSelectProps extends SelectProps {
-  indicatorClassName?: string;
-}
+
 function Calender() {
   return (
     <div className="space-y-6 ">
