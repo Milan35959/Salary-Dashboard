@@ -5,7 +5,9 @@ import { ScrollArea,ScrollBar } from "@/components/ui/scroll-area"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { ChevronLeft, ChevronRight, FileText, Plus, Search, Shield } from 'lucide-react'
 import React from 'react'
-
+interface CustomSelectProps extends SelectProps {
+  indicatorClassName?: string;
+}
 function Calender() {
   return (
     <div className="space-y-6 ">
@@ -66,8 +68,8 @@ function Calender() {
               </div>
 
               <div className="mb-4 flex items-center  justify-between">
-                <Select defaultValue="december" indicatorClassName="bg-white">
-                  <SelectTrigger className="w-[180px] cursor-pointer">
+                <Select defaultValue="december">
+                  <SelectTrigger className="w-[180px] cursor-pointer bg-white">
                     <SelectValue placeholder="December" />
                   </SelectTrigger>
                   <SelectContent>
