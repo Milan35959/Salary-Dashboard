@@ -1,10 +1,32 @@
+'use client';
+import { useQuery } from '@tanstack/react-query';
 import { Avatar } from '@/components/ui/avatar'
 import { Progress } from '@/components/ui/progress'
 import { Mail, MapPin, Phone, User } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
+const fetchUsers = async () => {
+  const response = await fetch('/api/users');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
+
+
 const UserDisplay = () => {
+  const {
+    data: user=[], isLoading, isError 
+    } = useQuery({
+      queryKey: ['users'], // Use queryKey instead of an array
+      queryFn: fetchUsers, // Use queryFn instead of the second argument
+    });
+
+    if (isLoading) return <div>Loading employees...</div>;
+  if (isError) return <div>Error fetching employees</div>;
+
+  
   return (
     <div className="rounded-xl bg-white w-[350px] md:w-[365px] mt-[-15px]">
     <div className="relative h-40 w-full  rounded-t-xl">
@@ -12,7 +34,7 @@ const UserDisplay = () => {
       <div className="absolute bottom-5 right-35">
         <Avatar className="h-20 w-20 border-4 border-white ">
           <Image
-            src="/assets/bg7.png?height=80&width=80"
+            src='/assets/bg7.png'
             alt="Amélie Laurent"
             width={80}
             height={80}
@@ -23,8 +45,8 @@ const UserDisplay = () => {
     </div>
 
     <div className="px-6 pb-3">
-      <h2 className="text-2xl font-[25px] text-center">Amélie Laurent</h2>
-      <p className="text-gray-500 text-center">UX Designer</p>
+      <h2 className="text-2xl font-[25px] text-center">{user.name}</h2>
+      <p className="text-gray-500 text-center">{user.role}</p>
 
       <div className="mt-8">
         <h3 className="mb-4 text-[18px] font-[25px]">Basic Information</h3>
@@ -36,7 +58,7 @@ const UserDisplay = () => {
               <span className="text-sm text-gray-500">Birthday</span>
             </div>
             
-            <span className="text-sm">26 September 1998</span>
+            <span className="text-sm">{user.birthday}</span>
           </div>
 
           <div className="flex items-center justify-between">
@@ -44,7 +66,7 @@ const UserDisplay = () => {
               <Phone className="h-4 w-4 text-gray-500" />
               <span className="text-sm text-gray-500">Phone number</span>
             </div>
-            <span className="text-sm">+33 1 70 36 39 50</span>
+            <span className="text-sm">{user.phone}</span>
           </div>
 
           <div className="flex items-center justify-between">
@@ -52,7 +74,7 @@ const UserDisplay = () => {
               <Mail className="h-4 w-4 text-gray-500" />
               <span className="text-sm text-gray-500">E-Mail</span>
             </div>
-            <span className="text-sm">amelielaurent88@gmail.com</span>
+            <span className="text-sm">{user.email}</span>
           </div>
 
           <div className="flex items-center justify-between">
@@ -89,7 +111,7 @@ const UserDisplay = () => {
               </svg>
               <span className="text-sm text-gray-500">Citizenship</span>
             </div>
-            <span className="text-sm">France</span>
+            <span className="text-sm">{user.Citizenship}</span>
           </div>
 
           <div className="flex items-center justify-between">
@@ -97,7 +119,7 @@ const UserDisplay = () => {
               <MapPin className="h-4 w-4 text-gray-500" />
               <span className="text-sm text-gray-500">City</span>
             </div>
-            <span className="text-sm">Paris</span>
+            <span className="text-sm">{user.city}</span>
           </div>
 
           <div className="flex items-center justify-between">
@@ -105,7 +127,7 @@ const UserDisplay = () => {
               <MapPin className="h-4 w-4 text-gray-500" />
               <span className="text-sm text-gray-500">Adress</span>
             </div>
-            <span className="text-sm">95700 Roissy-en-France</span>
+            <span className="text-sm">{user.address}</span>
           </div>
         </div>
       </div>
