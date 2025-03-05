@@ -217,7 +217,7 @@ const UserDisplay = () => {
               <span className="text-sm">Business trips</span>
               <span className="text-sm font-medium">58 days</span>
             </div>
-            <Progress value={70} className="h-2 bg-gray-200" indicatorClassName="bg-amber-400" />
+            <Progress value={70} className="h-2 bg-gray-200"  />
           </div>
 
           <div>
