@@ -1,9 +1,9 @@
 import { CalendarDay } from '@/components/CalenderDay'
 import { Button } from '@/components/ui/button'
-import { ScrollArea,ScrollBar } from "@/components/ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { ChevronLeft, ChevronRight, FileText, Plus, Search, Shield } from 'lucide-react'
+import {  FileText, Plus, Search, Shield } from 'lucide-react'
 import React from 'react'
 interface CustomSelectProps extends SelectProps {
   indicatorClassName?: string;
@@ -77,7 +77,7 @@ function Calender() {
                     <SelectItem value="november">November</SelectItem>
                     <SelectItem value="december">December</SelectItem>
                     <SelectItem value="january">January</SelectItem>
-                    <SelectItem value="febaury">Febaury</SelectItem>
+                    <SelectItem value="february">February</SelectItem>
                     <SelectItem value="march">March</SelectItem>
                     <SelectItem value="april">April</SelectItem>
                     <SelectItem value="may">May</SelectItem>
