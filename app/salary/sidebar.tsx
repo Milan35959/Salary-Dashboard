@@ -4,6 +4,7 @@ import { EmployeeCard } from '@/components/Employeecard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useState } from 'react';
+import { useEmployeeStore } from '../stores/useEmployeeStore';
 
 // Fetch employees from the API
 const fetchEmployees = async () => {
@@ -15,7 +16,7 @@ const fetchEmployees = async () => {
 };
 
 const Sidebar = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const { employees, currentPage, setCurrentPage } = useEmployeeStore();
   const employeesPerPage = 7;
 
   // Use TanStack Query to fetch employees
@@ -57,7 +58,7 @@ const Sidebar = () => {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
           className="cursor-pointer"
         >
@@ -65,13 +66,12 @@ const Sidebar = () => {
         </Button>
 
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-          // Show first page, last page, current page, and pages around current page
           if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
             return (
               <Button
                 key={page}
                 variant="ghost"
-                className={`h-8 w-8 rounded-full ${currentPage === page ? 'bg-white shadow-sm' : 'bg-gray-50'}`}
+                className={`h-8 w-8 rounded-full ${currentPage === page ? "bg-white shadow-sm" : "bg-gray-50"}`}
                 onClick={() => setCurrentPage(page)}
               >
                 {page}
@@ -79,13 +79,8 @@ const Sidebar = () => {
             );
           }
 
-          // Show ellipsis for gaps
           if (page === 2 || page === totalPages - 1) {
-            return (
-              <span key={page} className="text-gray-400">
-                ...
-              </span>
-            );
+            return <span key={page} className="text-gray-400">...</span>;
           }
 
           return null;
@@ -94,7 +89,7 @@ const Sidebar = () => {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
           <ChevronRight className="h-4 w-4" />
